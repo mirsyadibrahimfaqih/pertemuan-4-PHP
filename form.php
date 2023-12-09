@@ -204,7 +204,7 @@
                     <input type="text" id="phoneNumber" name="phoneNumber" pattern="\d+" placeholder="Enter Phone Number" class="form-control">
                 </div>
                 <div class="user-input-box">
-                    <label for="pendidikan">Pendidikan</label>
+                    <label for="pendidikan">Education</label>
                     <select id="pendidikan" name="pendidikan" class="form-control">
                         <option value="">Choose Your Education</option>
                         <option value="SD">SD</option>
