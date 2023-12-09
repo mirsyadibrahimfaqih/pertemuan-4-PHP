@@ -206,6 +206,7 @@
                 <div class="user-input-box">
                     <label for="pendidikan">Pendidikan</label>
                     <select id="pendidikan" name="pendidikan" class="form-control">
+                        <option value="">Choose Your Education</option>
                         <option value="SD">SD</option>
                         <option value="SMP">SMP</option>
                         <option value="SMA">SMA</option>
