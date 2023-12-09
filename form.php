@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Registration Form</title>
+    <title>Formulir Pendaftaran Responsif</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <style>
         body {
@@ -45,13 +45,17 @@
         .user-input-box {
             width: 48%;
             margin-bottom: 15px;
+            position: relative;
         }
 
-        .user-input-box label {
+        .user-input-box label,
+        .hobby-label {
             color: white;
             font-size: 20px;
             font-weight: 400;
             margin: 5px 0;
+            display: inline-block;
+            width: 100%;
         }
 
         .user-input-box input,
@@ -62,6 +66,64 @@
             outline: none;
             border: 1px solid grey;
             padding: 0 10px;
+        }
+
+        .user-input-box.multiselect {
+            width: 100%;
+        }
+
+        .user-input-box.multiselect .selectBox {
+            position: relative;
+            width: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .user-input-box.multiselect .selectBox select {
+            width: calc(100% + 22px);
+            font-size: 16px;
+            padding: 10px;
+            border: none;
+            border-radius: 7px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .user-input-box.multiselect .overSelect {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 2;
+        }
+
+        #checkboxes {
+            display: none;
+            border: 1px solid #ccc;
+            max-height: 150px;
+            overflow-y: auto;
+            background-color: white;
+            border-radius: 7px;
+            z-index: 3;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+        }
+
+        #checkboxes label {
+            display: block;
+            margin: 8px;
+            font-size: 14px;
+            color: black;
+        }
+
+        #checkboxes input[type="checkbox"] {
+            height: 20px;
+            width: 20px;
         }
 
         .gender-title {
@@ -75,7 +137,13 @@
 
         .gender-category label {
             color: white;
-            padding: 0 20px 0 5px;
+            padding: 0 15px 0 5px;
+            font-size: 18px;
+            display: inline-block;
+        }
+
+        .gender-category input {
+            transform: scale(0.8);
         }
 
         .form-submit-btn {
@@ -116,11 +184,11 @@
 
 <body>
     <div class="container">
-        <h1 class="form-title">Registration</h1>
+        <h1 class="form-title">Registration form</h1>
         <form action="p_form.php" method="post">
             <div class="main-user-info">
                 <div class="user-input-box">
-                    <label for="fullName">Full Name</label>
+                    <label for="fullName">Full name</label>
                     <input type="text" id="fullName" name="fullName" placeholder="Enter Full Name" class="form-control">
                 </div>
                 <div class="user-input-box">
@@ -132,11 +200,11 @@
                     <input type="email" id="email" name="email" placeholder="Enter Email" class="form-control">
                 </div>
                 <div class="user-input-box">
-                    <label for="phoneNumber">Phone Number</label>
+                    <label for="phoneNumber">Phone number</label>
                     <input type="text" id="phoneNumber" name="phoneNumber" pattern="\d+" placeholder="Enter Phone Number" class="form-control">
                 </div>
                 <div class="user-input-box">
-                    <label for="pendidikan">Education</label>
+                    <label for="pendidikan">Pendidikan</label>
                     <select id="pendidikan" name="pendidikan" class="form-control">
                         <option value="SD">SD</option>
                         <option value="SMP">SMP</option>
@@ -150,15 +218,21 @@
                     </select>
                 </div>
                 <div class="user-input-box">
-                    <label for="hobi">Hobby</label>
-                    <select id="hobi" name="hobi" class="form-control">
-                        <option value="Membaca buku">Membaca buku</option>
-                        <option value="Travelling">Travelling</option>
-                        <option value="Olahraga">Olahraga</option>
-                        <option value="Nonton">Nonton</option>
-                        <option value="Hiking">Hiking</option>
-                        <option value="Mancing">Mancing</option>
-                    </select>
+                    <label for="hobi" class="hobby-label">hobby</label>
+                    <div class="selectBox" onclick="showCheckboxes()">
+                        <select>
+                            <option readonly>Choose a Hobby</option>
+                        </select>
+                        <div class="overSelect"></div>
+                    </div>
+                    <div id="checkboxes">
+                        <label for="satu"><input type="checkbox" id="satu" name="hobi[]" value="Membaca buku" />Membaca buku</label>
+                        <label for="dua"><input type="checkbox" id="dua" name="hobi[]" value="Travelling" />Travelling</label>
+                        <label for="tiga"><input type="checkbox" id="tiga" name="hobi[]" value="Olahraga" />Olahraga</label>
+                        <label for="empat"><input type="checkbox" id="empat" name="hobi[]" value="Nonton" />Nonton</label>
+                        <label for="lima"><input type="checkbox" id="lima" name="hobi[]" value="Hiking" />Hiking</label>
+                        <label for="enam"><input type="checkbox" id="enam" name="hobi[]" value="Mancing" />Mancing</label>
+                    </div>
                 </div>
             </div>
             <div class="gender-details-box">
@@ -173,9 +247,26 @@
                 </div>
             </div>
             <div class="form-submit-btn">
-                <input type="submit" value="Register" class="btn btn-primary">
+                <input type="submit" value="Daftar" class="btn btn-primary">
             </div>
         </form>
+        <script>
+            var expanded = false;
+
+            function showCheckboxes() {
+                var checkboxes = document.getElementById("checkboxes");
+
+                if (!expanded) {
+                    checkboxes.style.display = "block";
+                    checkboxes.style.maxHeight = "none"; // Tambahkan baris ini
+                    expanded = true;
+                } else {
+                    checkboxes.style.display = "none";
+                    checkboxes.style.maxHeight = "150px"; // Ganti dengan tinggi maksimal sesuai kebutuhan Anda
+                    expanded = false;
+                }
+            }
+        </script>
     </div>
 </body>
 
