@@ -218,7 +218,7 @@
                     </select>
                 </div>
                 <div class="user-input-box">
-                    <label for="hobi" class="hobby-label">hobby</label>
+                    <label for="hobi" class="hobby-label">Hobby</label>
                     <div class="selectBox" onclick="showCheckboxes()">
                         <select>
                             <option readonly>Choose a Hobby</option>
