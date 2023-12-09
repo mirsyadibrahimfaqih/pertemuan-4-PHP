@@ -102,11 +102,11 @@
             echo "<table class='registration-results'>";
             echo "<tr><th>Field</th><th>Value</th></tr>";
             echo "<tr><td>Full Name</td><td>$fullName</td></tr>";
-            echo "<tr><td>Umur</td><td>$umur</td></tr>";
+            echo "<tr><td>Age</td><td>$umur</td></tr>";
             echo "<tr><td>Email</td><td>$email</td></tr>";
             echo "<tr><td>Phone Number</td><td>$phoneNumber</td></tr>";
-            echo "<tr><td>Pendidikan</td><td>$pendidikan</td></tr>";
-            echo "<tr><td>Hobi</td><td>$hobi</td></tr>";
+            echo "<tr><td>Education</td><td>$pendidikan</td></tr>";
+            echo "<tr><td>Hobby</td><td>$hobi</td></tr>";
             echo "<tr><td>Gender</td><td>$gender</td></tr>";
             echo "</table>";
         } else {
