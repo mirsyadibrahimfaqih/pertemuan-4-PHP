@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,7 +54,8 @@
             margin: 5px 0;
         }
 
-        .user-input-box input {
+        .user-input-box input,
+        .user-input-box select {
             height: 40px;
             width: 100%;
             border-radius: 7px;
@@ -72,22 +74,22 @@
         }
 
         .gender-category label {
-            color: white; /* Perubahan warna teks menjadi putih */
+            color: white;
             padding: 0 20px 0 5px;
         }
 
         .form-submit-btn {
-            margin-top: 40px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
         }
 
         .form-submit-btn input {
-            display: block;
-            width: 100%;
-            margin-top: 10px;
+            width: 50%;
             font-size: 20px;
             padding: 10px;
             border: none;
-            border-radius: 3px;
+            border-radius: 5px;
             color: rgb(209, 209, 209);
             background: rgba(63, 114, 76, 0.7);
             cursor: pointer;
@@ -111,6 +113,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1 class="form-title">Registration</h1>
@@ -121,8 +124,8 @@
                     <input type="text" id="fullName" name="fullName" placeholder="Enter Full Name" class="form-control">
                 </div>
                 <div class="user-input-box">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Enter Username" class="form-control">
+                    <label for="umur">Age</label>
+                    <input type="text" id="umur" name="umur" placeholder="Enter Age" pattern="\d+" class="form-control">
                 </div>
                 <div class="user-input-box">
                     <label for="email">Email</label>
@@ -130,10 +133,10 @@
                 </div>
                 <div class="user-input-box">
                     <label for="phoneNumber">Phone Number</label>
-                    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" class="form-control">
+                    <input type="text" id="phoneNumber" name="phoneNumber" pattern="\d+" placeholder="Enter Phone Number" class="form-control">
                 </div>
                 <div class="user-input-box">
-                    <label for="pendidikan">Pendidikan</label>
+                    <label for="pendidikan">Education</label>
                     <select id="pendidikan" name="pendidikan" class="form-control">
                         <option value="SD">SD</option>
                         <option value="SMP">SMP</option>
@@ -147,7 +150,7 @@
                     </select>
                 </div>
                 <div class="user-input-box">
-                    <label for="Hobi">Hobi</label>
+                    <label for="hobi">Hobby</label>
                     <select id="hobi" name="hobi" class="form-control">
                         <option value="Membaca buku">Membaca buku</option>
                         <option value="Travelling">Travelling</option>
@@ -165,7 +168,7 @@
                     <label for="male">Male</label>
                     <input type="radio" name="gender" id="female" value="Female">
                     <label for="female">Female</label>
-                    <input type="radio" name="gender" id="other" value="Other">
+                    <input type="radio" name="gender" id="other" value="other">
                     <label for="other">Other</label>
                 </div>
             </div>
@@ -175,4 +178,5 @@
         </form>
     </div>
 </body>
+
 </html>
