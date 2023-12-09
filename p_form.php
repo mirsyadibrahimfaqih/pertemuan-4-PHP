@@ -52,6 +52,7 @@
         th {
             background-color: #f2f2f2;
         }
+
         .registration-results th {
             color: black;
         }
@@ -88,7 +89,11 @@
             $email = htmlspecialchars($_POST["email"]);
             $phoneNumber = htmlspecialchars($_POST["phoneNumber"]);
             $pendidikan = htmlspecialchars($_POST["pendidikan"]);
-            $hobi = htmlspecialchars($_POST["hobi"]);
+
+            $hobiArray = isset($_POST["hobi"]) ? $_POST["hobi"] : array();
+
+            $hobi = implode(", ", $hobiArray);
+
             $gender = "";
             if (isset($_POST["gender"])) {
                 $gender = htmlspecialchars($_POST["gender"]);
@@ -108,6 +113,7 @@
             echo "<p>No data submitted.</p>";
         }
         ?>
+
         <div class="back-btn">
             <a href="form.php">Back to Form</a>
         </div>
