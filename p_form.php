@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,7 @@
             background: url(https://sinergispp.co.id/storage/2022/11/WhatsApp-Image-2022-11-16-at-12.59.19-8.jpeg);
             background-size: cover;
             margin: 0;
-            color: white; /* Menambahkan warna teks putih untuk body */
+            color: white;
         }
 
         .container {
@@ -30,16 +31,7 @@
             font-weight: 600;
             text-align: center;
             padding-bottom: 20px;
-            color: white; /* Merubah warna teks title menjadi putih */
-        }
-
-        .result-info {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 10px;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 8px;
-            border-radius: 5px;
+            color: white;
         }
 
         table {
@@ -49,7 +41,8 @@
             color: white;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 12px;
             text-align: left;
@@ -59,37 +52,52 @@
         th {
             background-color: #f2f2f2;
         }
+        .registration-results th {
+            color: black;
+        }
 
-        /* Style for the registration results section */
-        .registration-results {
-            color: white;
+        .back-btn {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-btn a {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .back-btn a:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1 class="result-title">Registration Result</h1>
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // Ambil nilai dari formulir
             $fullName = htmlspecialchars($_POST["fullName"]);
-            $username = htmlspecialchars($_POST["username"]);
+            $umur = htmlspecialchars($_POST["umur"]);
             $email = htmlspecialchars($_POST["email"]);
             $phoneNumber = htmlspecialchars($_POST["phoneNumber"]);
             $pendidikan = htmlspecialchars($_POST["pendidikan"]);
             $hobi = htmlspecialchars($_POST["hobi"]);
             $gender = "";
-
-            // Cek gender yang dipilih
             if (isset($_POST["gender"])) {
                 $gender = htmlspecialchars($_POST["gender"]);
             }
 
-            // Tampilkan hasil pada tabel
             echo "<table class='registration-results'>";
             echo "<tr><th>Field</th><th>Value</th></tr>";
             echo "<tr><td>Full Name</td><td>$fullName</td></tr>";
-            echo "<tr><td>Username</td><td>$username</td></tr>";
+            echo "<tr><td>Umur</td><td>$umur</td></tr>";
             echo "<tr><td>Email</td><td>$email</td></tr>";
             echo "<tr><td>Phone Number</td><td>$phoneNumber</td></tr>";
             echo "<tr><td>Pendidikan</td><td>$pendidikan</td></tr>";
@@ -100,6 +108,10 @@
             echo "<p>No data submitted.</p>";
         }
         ?>
+        <div class="back-btn">
+            <a href="form.php">Back to Form</a>
+        </div>
     </div>
 </body>
+
 </html>
